@@ -33,6 +33,10 @@ class App extends Component {
         if(!characters[i].isClicked){
           characters[i].isClicked = characters[i].isClicked + 1;
           this.setState({score : this.state.score + 1}, function(){
+            if(this.state.score === 15){
+              alert(`You won the game :( \nscore: ${this.state.score}`);
+              this.setState({score: 0});
+            }
             console.log(this.state.score);
           });
           this.state.characters.sort(() => Math.random() - 0.5)
