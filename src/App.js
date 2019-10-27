@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Card from "./components/CharacterCard";
+import CharacterCard from "./components/CharacterCard";
 import Wrapper from "./components/Wrapper";
 import Header from "./components/Header";
 import characters from "./characters.json";
@@ -41,19 +41,21 @@ class App extends Component {
           this.gameOver();
         }
       }
+      return false;
     });
   }
-  // Map over this.state.characters and render a cardCard component for each card object
+
+  // Map over this.state.characters and render a CharacterCard component for each card object
   render() {
     return (
       <Wrapper>
         <Header score={this.state.score} highscore={this.state.highscore}>Clicky Game</Header>
-        {this.state.characters.map(card => (
-          <Card
+        {this.state.characters.map(character => (
+          <CharacterCard
             clickCount={this.clickCount}
-            id={card.id}
-            key={card.id}
-            image={card.image}
+            id={character.id}
+            key={character.id}
+            image={character.image}
           />
         ))}
       </Wrapper>
